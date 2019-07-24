@@ -2,6 +2,7 @@ package group.msg.test.exercise;
 
 import group.msg.exercises.Employee;
 import group.msg.exercises.Printer;
+import group.msg.exercises.SchedulerRandomEmployee;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -21,6 +22,9 @@ public class InterceptorTestEmployee {
     @Inject
     private Printer print;
 
+    @Inject
+    private SchedulerRandomEmployee sre;
+
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "ISTExamples.war")
@@ -34,5 +38,11 @@ public class InterceptorTestEmployee {
         logger.info("Intercepted: " + result );
         logger.info("================================================================");
 
+    }
+    @Test
+    public void testSchedulerRandomEmployee() {
+        String result = sre.scheduleCreateRandomEmployee();
+        logger.info("Random generated employee is : " + result );
+        logger.info("================================================================");
     }
 }
