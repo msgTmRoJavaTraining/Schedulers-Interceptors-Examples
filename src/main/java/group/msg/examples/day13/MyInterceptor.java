@@ -25,9 +25,8 @@ public class MyInterceptor {
 
         Object[] param=ic.getParameters();
         Employee e= (Employee) param[0];
-
-
         e.setName(e.getName().toUpperCase());
+
         ic.setParameters(param);
 
         Object result = ic.proceed();

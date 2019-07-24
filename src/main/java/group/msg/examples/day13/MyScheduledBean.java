@@ -10,9 +10,9 @@ import javax.interceptor.Interceptors;
 import java.util.Random;
 import java.util.logging.Logger;
 
-//@RunAs("admin")
+@RunAs("admin")
 @Stateless
-@Interceptors(MyInterceptor.class)
+
  public class MyScheduledBean {
 
     @Inject
@@ -37,7 +37,7 @@ import java.util.logging.Logger;
     }
 
 
-    @Schedule(second = "*/30", minute = "*", hour = "*")
+    @Schedule(second = "*/10", minute = "*", hour = "*")
     public void scheduleWildCard() {
         logger.info("Executing scheduled wild card . . .");
         myEJB.printDetailsEmployee(new Employee(generateRandomField(),generateRandomField()));
