@@ -13,7 +13,6 @@ public abstract class DecoratorLogic implements BusinessLogic {
   @Any
   private BusinessLogic logic;
 
-
   @Override
   public String performSomeBusinessLogic() {
     return logic.performSomeBusinessLogic().replace("Some", "Decorated");

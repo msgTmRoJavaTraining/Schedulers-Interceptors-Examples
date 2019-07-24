@@ -9,8 +9,8 @@ import javax.interceptor.InvocationContext;
 import java.util.logging.Logger;
 
 @Priority(Interceptor.Priority.APPLICATION)
-public class HelloInterceptor {
-
+public class HelloInterceptor
+{
   @Inject
   private Logger logger;
 
