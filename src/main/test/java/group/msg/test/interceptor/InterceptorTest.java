@@ -5,11 +5,9 @@ import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
 import group.msg.exercises.EJB;
 import group.msg.exercises.Employee;
-import group.msg.exercises.EmployeeInterceptor;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +30,10 @@ public class InterceptorTest {
   @Inject
   private EJB ejb;
   @Inject
+  private Employee eployee;
+  @Inject
   private Logger logger;
+
 
 
   @Deployment
@@ -76,7 +77,13 @@ public class InterceptorTest {
   }
   @Test
   public void testEmployeeInterc() {
-    Employee emp=new Employee("Alex",21);
-    ejb.loggThEeName(emp);
+   // Employee emp=new Employee("Alex",21);
+   // ejb.loggThEeName(emp);
+  }
+  @Test
+  public void testRandEmpl(){
+    eployee.randomEmpl();
+
+
   }
 }
