@@ -7,6 +7,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -17,9 +18,10 @@ import java.util.logging.Logger;
 
 public class EmployeeTest {
     @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+    public static WebArchive createDeployment() {
+        return ShrinkWrap.create(WebArchive.class, "ISTExamples.war")
+                .addPackages(true, "group.msg")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
     @Inject
