@@ -10,6 +10,6 @@ public class InterceptedEmployee
 {
     public String name(Employee employee)
     {
-       return employee.getName();
+       return employee.getName().toUpperCase();
     }
 }

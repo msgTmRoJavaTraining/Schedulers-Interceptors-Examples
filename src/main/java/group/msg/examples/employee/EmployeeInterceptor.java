@@ -9,7 +9,7 @@ import javax.interceptor.InvocationContext;
 import java.util.logging.Logger;
 
 @Priority(Interceptor.Priority.APPLICATION)
-@Interceptor
+
 public class EmployeeInterceptor {
 
     @Inject
@@ -27,7 +27,7 @@ public class EmployeeInterceptor {
 
         Object result = ic.proceed();
 
-        logger.info("Method result: " + result.toString().toUpperCase());
+        logger.info("Method result: " + result);
 
         return result;
     }

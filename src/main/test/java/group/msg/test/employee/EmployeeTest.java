@@ -33,9 +33,8 @@ public class EmployeeTest {
     @Test
     public void testInterceptedEmployee() {
 
-        Employee e1 = new Employee("Ion");
+        Employee e1 = new Employee("Marius-Andrei");
         String response = interceptedEmployee.name(e1);
         logger.info("Employee name: " + response);
-        logger.info("================================================================");
     }
 }
