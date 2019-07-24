@@ -2,6 +2,7 @@ package group.msg.test.day13;
 
 import group.msg.examples.day13.Employee;
 import group.msg.examples.day13.FirstExercise;
+import group.msg.examples.day13.SecondExercise;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -18,6 +19,9 @@ public class MyTestClass {
     private FirstExercise firstExercise;
 
     @Inject
+    private SecondExercise secondExercise;
+
+    @Inject
     private Logger logger;
 
     @Deployment
@@ -28,9 +32,16 @@ public class MyTestClass {
     }
 
     @Test
-    public void testInterceptedHello() {
+    public void testInterceptedSingleEmployeeGen() {
         String response = firstExercise.getEmployeeNameForIntercept(new Employee("Astanei Andrei", "KFC"));
         logger.info("Intercepted first exercise: " + response);
+        logger.info("================================================================");
+    }
+
+    @Test
+    public void testInterceptedScheduledEmployeeGen() {
+        secondExercise.scheduledEmployeeGeneration();
+        logger.info("Second Exercise Intercepted");
         logger.info("================================================================");
     }
 }
