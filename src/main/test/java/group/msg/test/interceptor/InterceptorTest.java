@@ -1,5 +1,8 @@
 package group.msg.test.interceptor;
 
+import group.msg.examples.entities.Employee;
+import group.msg.examples.exercises.ExercisesEJB;
+import group.msg.examples.exercises.UpperCaseInterceptor;
 import group.msg.examples.interceptor.AuditedHello;
 import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
@@ -28,6 +31,9 @@ public class InterceptorTest {
 
   @Inject
   private Logger logger;
+
+  @Inject
+  private ExercisesEJB exercisesEJB;
 
 
   @Deployment
@@ -68,5 +74,11 @@ public class InterceptorTest {
     response = securedHello.doNotIntercept(15);
     logger.info("Not secured hello: " + response);
     logger.info("================================================================");
+  }
+
+  @Test
+  public void upperCaseInterceptor() {
+    Employee emp = new Employee("Razvan",22,2500.0);
+    exercisesEJB.printEmployeeDetails(emp);
   }
 }
