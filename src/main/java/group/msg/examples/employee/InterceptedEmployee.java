@@ -7,14 +7,10 @@ import javax.interceptor.Interceptors;
 import java.util.logging.Logger;
 
 @Stateless
-@Interceptors(InterceptedEmployee.class)
+@Interceptors(EmployeeInterceptor.class)
 
 public class InterceptedEmployee
 {
-
-    @Inject
-    private Logger logger;
-
 
     public Employee name(Employee employee)
     {

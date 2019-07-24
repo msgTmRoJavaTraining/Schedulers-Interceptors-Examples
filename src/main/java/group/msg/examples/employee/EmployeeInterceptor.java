@@ -30,9 +30,11 @@ public class EmployeeInterceptor {
 
         ((Employee)result).setName(((Employee) result).getName().toUpperCase());
 
-
         logger.info("Method result: " + ((Employee) result).getName());
 
         return result;
     }
+
+
+
 }
