@@ -1,10 +1,12 @@
 package group.msg.exercises;
 
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class CustomCensored implements Censored {
+@Stateless
+@Censored
+public class CustomCensored  {
 
     private static List<String> swearWords = new ArrayList<>();
 
@@ -38,12 +40,13 @@ public class CustomCensored implements Censored {
 
 
     public String replaceSwearWords(String received){
-
+        String res = "";
+        swearWords.add("fuck");
         for(String str:swearWords){
 
-            received.replace(received,str);
+            res = received.replace(str,CustomCensored.getAlphaNumericString(str.length()));
         }
 
-        return received;
+        return res;
     }
 }
