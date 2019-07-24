@@ -3,6 +3,9 @@ package group.msg.test.interceptor;
 import group.msg.examples.interceptor.AuditedHello;
 import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
+import group.msg.exercises.EJB;
+import group.msg.exercises.Employee;
+import group.msg.exercises.EmployeeInterceptor;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -26,6 +29,8 @@ public class InterceptorTest {
   @Inject
   private SecuredHello securedHello;
 
+  @Inject
+  private EJB ejb;
   @Inject
   private Logger logger;
 
@@ -68,5 +73,10 @@ public class InterceptorTest {
     response = securedHello.doNotIntercept(15);
     logger.info("Not secured hello: " + response);
     logger.info("================================================================");
+  }
+  @Test
+  public void testEmployeeInterc() {
+    Employee emp=new Employee("Alex",21);
+    ejb.loggThEeName(emp);
   }
 }
