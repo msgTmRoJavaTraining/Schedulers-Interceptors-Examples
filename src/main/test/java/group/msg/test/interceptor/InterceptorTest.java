@@ -77,8 +77,8 @@ public class InterceptorTest {
   }
   @Test
   public void testEmployeeInterc() {
-   // Employee emp=new Employee("Alex",21);
-   // ejb.loggThEeName(emp);
+   Employee emp=new Employee("Alex",21);
+   ejb.loggThEeName(emp);
   }
   @Test
   public void testRandEmpl(){
