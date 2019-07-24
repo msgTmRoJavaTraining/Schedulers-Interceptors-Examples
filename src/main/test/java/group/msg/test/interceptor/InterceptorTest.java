@@ -1,5 +1,7 @@
 package group.msg.test.interceptor;
 
+import group.msg.examples.employee.Employee;
+import group.msg.examples.employee.InterceptedEmployee;
 import group.msg.examples.interceptor.AuditedHello;
 import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
@@ -34,6 +36,19 @@ public class InterceptorTest {
     return ShrinkWrap.create(WebArchive.class, "ISTExamples.war")
             .addPackages(true, "group.msg")
             .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+  }
+
+
+  @Inject
+  private InterceptedEmployee interceptedEmployee;
+
+
+  @Test
+  public void testInterceptedEmployee() {
+
+    Employee e1 = new Employee("Marius-Andrei");
+
+    interceptedEmployee.name(e1);
   }
 
   @Test

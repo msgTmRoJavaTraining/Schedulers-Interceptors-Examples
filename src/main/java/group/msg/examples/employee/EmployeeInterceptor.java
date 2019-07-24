@@ -9,7 +9,7 @@ import javax.interceptor.InvocationContext;
 import java.util.logging.Logger;
 
 @Priority(Interceptor.Priority.APPLICATION)
-
+@Interceptor
 public class EmployeeInterceptor {
 
     @Inject
@@ -25,9 +25,13 @@ public class EmployeeInterceptor {
     public Object interceptHello(InvocationContext ic) throws Exception {
         logger.info("Checking for method invocation: " + ic.getMethod().getName());
 
+
         Object result = ic.proceed();
 
-        logger.info("Method result: " + result);
+        ((Employee)result).setName(((Employee) result).getName().toUpperCase());
+
+
+        logger.info("Method result: " + ((Employee) result).getName());
 
         return result;
     }
