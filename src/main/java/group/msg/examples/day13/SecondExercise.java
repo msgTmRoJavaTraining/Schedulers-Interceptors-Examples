@@ -16,7 +16,7 @@ public class SecondExercise {
     @Inject
     private FirstExercise firstExercise;
 
-    @Schedule(second = "*/0", minute = "*", hour = "*")
+    @Schedule(second = "0", minute = "*", hour = "*")
     public void scheduledEmployeeGeneration() {
         logger.info("Se executa crearea automata a unui nou angajat ...\nPuuff, angajat nou creat");
 

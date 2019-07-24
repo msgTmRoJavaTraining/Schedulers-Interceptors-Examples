@@ -18,8 +18,8 @@ public class MyTestClass {
     @Inject
     private FirstExercise firstExercise;
 
-//    @Inject
-//    private SecondExercise secondExercise;
+    @Inject
+    private SecondExercise secondExercise;
 
     @Inject
     private Logger logger;
@@ -38,10 +38,10 @@ public class MyTestClass {
         logger.info("================================================================");
     }
 
-//    @Test
-//    public void testInterceptedScheduledEmployeeGen() {
-//        secondExercise.scheduledEmployeeGeneration();
-//        logger.info("Second Exercise Intercepted");
-//        logger.info("================================================================");
-//    }
+    @Test
+    public void testInterceptedScheduledEmployeeGen() {
+        secondExercise.scheduledEmployeeGeneration();
+        logger.info("Second Exercise Intercepted");
+        logger.info("================================================================");
+    }
 }
