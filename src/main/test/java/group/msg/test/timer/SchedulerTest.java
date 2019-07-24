@@ -26,7 +26,6 @@ public class SchedulerTest {
   @Inject
   private Logger logger;
 
-
   @Deployment
   public static WebArchive createDeployment() {
     return ShrinkWrap.create(WebArchive.class, "ISTExamples.war")

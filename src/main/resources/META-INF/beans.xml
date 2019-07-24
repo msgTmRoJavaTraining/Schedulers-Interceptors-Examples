@@ -9,6 +9,7 @@
     </interceptors>
 
     <decorators>
+        <class>group.msg.examples.decorator.CensoredStringLogic</class>
         <class>group.msg.examples.decorator.DecoratorLogic</class>
     </decorators>
 </beans>

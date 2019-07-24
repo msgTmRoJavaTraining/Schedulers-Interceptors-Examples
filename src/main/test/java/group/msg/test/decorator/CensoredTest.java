@@ -1,7 +1,6 @@
-package group.msg.test.employee;
-
-import group.msg.examples.employee.Employee;
-import group.msg.examples.employee.InterceptedEmployee;
+package group.msg.test.decorator;
+import group.msg.examples.decorator.CensoredString;
+import group.msg.examples.interceptor.CensoredStringClass;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -10,28 +9,26 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.util.logging.Logger;
 
 @RunWith(Arquillian.class)
+public class CensoredTest
+{
+    @Inject
+    private CensoredString censoredString;
 
-public class EmployeeTest {
+    @Inject
+    private Logger logger;
+
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "ISTExamples.war")
                 .addPackages(true, "group.msg")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-
-    @Inject
-    private InterceptedEmployee interceptedEmployee;
-
     @Test
-    public void testInterceptedEmployee() {
+    public void testDecoratorLogic() {
 
-        Employee e1 = new Employee("Marius-Andrei");
-
-        interceptedEmployee.name(e1);
+        logger.info(censoredString.censorOneString("am o casa mare si frumoasa"));
     }
-
-
-
 }
