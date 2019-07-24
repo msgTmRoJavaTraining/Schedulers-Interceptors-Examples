@@ -3,6 +3,7 @@ package group.msg.test.day13;
 
 import group.msg.examples.day13.Employee;
 import group.msg.examples.day13.MyEJB;
+import group.msg.examples.day13.MyScheduledBean;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -22,6 +23,9 @@ public class MyTest {
     private MyEJB myEJB;
 
     @Inject
+    private MyScheduledBean myScheduledBean;
+
+    @Inject
     private Logger logger;
 
     @Deployment
@@ -34,5 +38,11 @@ public class MyTest {
     public void interceptedDetails(){
         String response=myEJB.printDetailsEmployee(e);
         logger.info("Employees name: " + response);
+    }
+
+    @Test
+    public void randomDetails(){
+        myScheduledBean.scheduleWildCard();
+        logger.info("Employees name");
     }
 }
