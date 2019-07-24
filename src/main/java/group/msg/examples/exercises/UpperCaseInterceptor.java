@@ -18,7 +18,6 @@ public class UpperCaseInterceptor {
         Object result = ic.proceed();
         ((Employee) result).setName(((Employee) result).getName().toUpperCase());
 
-        logger.info("After: " + result);
         return result;
     }
 }

@@ -62,6 +62,5 @@ public class SchedulerTest {
   public void testRandomSchedulerCreator()
   {
     randomSchedulerCreator.scheduleNewEmployee();
-
   }
 }
