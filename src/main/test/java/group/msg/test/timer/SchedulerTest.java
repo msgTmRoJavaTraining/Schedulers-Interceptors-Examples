@@ -1,5 +1,6 @@
 package group.msg.test.timer;
 
+import group.msg.examples.exercises.RandomSchedulerCreator;
 import group.msg.examples.interceptor.AuditedHello;
 import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
@@ -22,6 +23,9 @@ public class SchedulerTest {
 
   @Inject
   private ProgramaticTimerBean timerBean;
+
+  @Inject
+  private RandomSchedulerCreator randomSchedulerCreator;
 
   @Inject
   private Logger logger;
@@ -52,5 +56,12 @@ public class SchedulerTest {
     result = timerBean.stopAllScheduledTimers();
     logger.info(result);
     Assert.assertEquals(0, timerBean.getAllTimers().size());
+  }
+
+  @Test
+  public void testRandomSchedulerCreator()
+  {
+    randomSchedulerCreator.scheduleNewEmployee();
+
   }
 }

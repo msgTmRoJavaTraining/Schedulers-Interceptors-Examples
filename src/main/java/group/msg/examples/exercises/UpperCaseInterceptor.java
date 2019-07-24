@@ -16,9 +16,9 @@ public class UpperCaseInterceptor {
     public Object interceptEmployee(InvocationContext ic) throws Exception {
         logger.info("Checking for method invocation: " + ic.getMethod().getName());
         Object result = ic.proceed();
-        ((Employee)result).setName(((Employee)result).getName().toUpperCase());
+        ((Employee) result).setName(((Employee) result).getName().toUpperCase());
 
-        logger.info("Method result: " + result);
+        logger.info("After: " + result);
         return result;
     }
 }
