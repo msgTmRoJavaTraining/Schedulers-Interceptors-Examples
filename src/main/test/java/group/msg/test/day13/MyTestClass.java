@@ -3,6 +3,7 @@ package group.msg.test.day13;
 import group.msg.examples.day13.Employee;
 import group.msg.examples.day13.FirstExercise;
 import group.msg.examples.day13.SecondExercise;
+import group.msg.examples.day13.ThirdExercise;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -20,6 +21,9 @@ public class MyTestClass {
 
     @Inject
     private SecondExercise secondExercise;
+
+    @Inject
+    private ThirdExercise thirdExercise;
 
     @Inject
     private Logger logger;
@@ -42,6 +46,13 @@ public class MyTestClass {
     public void testInterceptedScheduledEmployeeGen() {
         secondExercise.scheduledEmployeeGeneration();
         logger.info("Second Exercise Intercepted");
+        logger.info("================================================================");
+    }
+
+    @Test
+    public void testBadWords() {
+        String message = thirdExercise.sendMessageToChat("Lupul a spus urat1");
+        logger.info("Third Exercise Intercepted!\nValue is: " + message);
         logger.info("================================================================");
     }
 }
