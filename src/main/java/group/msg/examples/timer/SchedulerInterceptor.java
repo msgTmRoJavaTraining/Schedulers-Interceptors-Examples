@@ -6,6 +6,7 @@ import javax.interceptor.AroundTimeout;
 import javax.interceptor.InvocationContext;
 import java.util.logging.Logger;
 
+@javax.interceptor.Interceptor
 public class SchedulerInterceptor {
 
   @Inject

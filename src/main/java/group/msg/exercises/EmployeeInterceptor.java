@@ -8,6 +8,7 @@ import javax.interceptor.InvocationContext;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+
 @Priority(Interceptor.Priority.APPLICATION)
 public class EmployeeInterceptor {
 

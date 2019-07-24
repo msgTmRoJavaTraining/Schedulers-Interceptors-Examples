@@ -4,6 +4,7 @@ import group.msg.examples.interceptor.AuditedHello;
 import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
 import group.msg.examples.timer.ProgramaticTimerBean;
+import group.msg.examples.timer.ScheduledBean;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -26,6 +27,8 @@ public class SchedulerTest {
   @Inject
   private Logger logger;
 
+  @Inject
+  private ScheduledBean sb;
 
   @Deployment
   public static WebArchive createDeployment() {
@@ -53,4 +56,10 @@ public class SchedulerTest {
     logger.info(result);
     Assert.assertEquals(0, timerBean.getAllTimers().size());
   }
+
+  @Test
+  public void addTest(){
+    sb.scheduleWildCard();
+  }
+
 }

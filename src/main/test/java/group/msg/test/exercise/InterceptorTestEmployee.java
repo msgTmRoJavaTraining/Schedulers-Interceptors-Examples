@@ -1,5 +1,6 @@
 package group.msg.test.exercise;
 
+import group.msg.exercises.CensoredGenerator;
 import group.msg.exercises.Employee;
 import group.msg.exercises.Printer;
 import group.msg.exercises.SchedulerRandomEmployee;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 @RunWith(Arquillian.class)
 public class InterceptorTestEmployee {
 
+
     @Inject
     private Logger logger;
 
@@ -24,6 +26,9 @@ public class InterceptorTestEmployee {
 
     @Inject
     private SchedulerRandomEmployee sre;
+
+    @Inject
+    private CensoredGenerator cg;
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -41,8 +46,14 @@ public class InterceptorTestEmployee {
     }
     @Test
     public void testSchedulerRandomEmployee() {
-        String result = sre.scheduleCreateRandomEmployee();
-        logger.info("Random generated employee is : " + result );
+        sre.scheduleCreateRandomEmployee();
+        logger.info("Random generated employee is : " );
         logger.info("================================================================");
     }
+//    @Test
+//    public void testCensored() {
+//        String result = cg.censoredWords("fuck","shit");
+//        logger.info("Response is: " + result );
+//        logger.info("================================================================");
+//    }
 }
