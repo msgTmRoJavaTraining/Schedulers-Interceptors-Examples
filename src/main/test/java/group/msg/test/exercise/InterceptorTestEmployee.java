@@ -50,10 +50,9 @@ public class InterceptorTestEmployee {
         logger.info("Random generated employee is : " );
         logger.info("================================================================");
     }
-//    @Test
-//    public void testCensored() {
-//        String result = cg.censoredWords("fuck","shit");
-//        logger.info("Response is: " + result );
-//        logger.info("================================================================");
-//    }
+    @Test
+    public void testCensored() {
+        String result = cg.censoredWords("fuck","shit","ass");
+        logger.info("================================================================");
+    }
 }
