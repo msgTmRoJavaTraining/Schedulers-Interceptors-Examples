@@ -16,11 +16,11 @@ public class SecondExercise {
     @Inject
     private FirstExercise firstExercise;
 
-    @Schedule(second = "0", minute = "*", hour = "*")
-    public boolean scheduledEmployeeGeneration() {
+    @Schedule(second = "*/0", minute = "*", hour = "*")
+    public void scheduledEmployeeGeneration() {
         logger.info("Se executa crearea automata a unui nou angajat ...\nPuuff, angajat nou creat");
-        firstExercise.getEmployeeNameForIntercept(new Employee(generateString(20), generateString(7)));
-        return true;
+
+        firstExercise.getEmployeeNameForIntercept(new Employee(generateString(10), generateString(10)));
     }
 
     public String generateString(int StringLength) {
