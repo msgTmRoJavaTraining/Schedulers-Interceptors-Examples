@@ -15,12 +15,10 @@ public class UpperCaseInterceptor {
     @AroundInvoke
     public Object interceptEmployee(InvocationContext ic) throws Exception {
         logger.info("Checking for method invocation: " + ic.getMethod().getName());
-
-
         Object result = ic.proceed();
-        String upperName=((Employee)result).getName().toUpperCase();
+        ((Employee)result).setName(((Employee)result).getName().toUpperCase());
 
-        logger.info("Method result: " + upperName);
+        logger.info("Method result: " + result);
         return result;
     }
 }

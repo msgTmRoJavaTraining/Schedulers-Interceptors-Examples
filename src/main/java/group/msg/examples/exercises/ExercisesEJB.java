@@ -15,7 +15,6 @@ public class ExercisesEJB {
 
     @Interceptors(UpperCaseInterceptor.class)
     public Employee printEmployeeDetails(Employee emp) {
-        logger.info("Employee: " + emp.getName() + ", Age: " + emp.getAge() + ", Salary: " + emp.getSalary());
         return emp;
     }
 
