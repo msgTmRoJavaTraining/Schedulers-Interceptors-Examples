@@ -2,6 +2,7 @@ package group.msg.test.interceptor;
 
 import group.msg.examples.entities.Employee;
 import group.msg.examples.exercises.ExercisesEJB;
+import group.msg.examples.exercises.NoSwearEJB;
 import group.msg.examples.interceptor.AuditedHello;
 import group.msg.examples.interceptor.InterceptedHello;
 import group.msg.examples.interceptor.SecuredHello;
@@ -32,6 +33,9 @@ public class InterceptorTest {
 
     @Inject
     private ExercisesEJB exercisesEJB;
+
+    @Inject
+     private NoSwearEJB noSwearEJB;
 
 
     @Deployment
@@ -78,5 +82,12 @@ public class InterceptorTest {
     public void testUpperCaseInterceptor() {
         Employee emp = new Employee("Razvan", 22, 2500.0);
         exercisesEJB.printEmployeeDetails(emp);
+    }
+
+    @Test
+    public void testNoSwearEJB() {
+    noSwearEJB.CensorString("Shut the fuck up!");
+    noSwearEJB.CensorString("You bastard!");
+    noSwearEJB.CensorString("I am a poor man!");
     }
 }
