@@ -1,6 +1,7 @@
 package group.msg.test.day13;
 
 
+import group.msg.examples.day13.CensoredBean;
 import group.msg.examples.day13.Employee;
 import group.msg.examples.day13.MyEJB;
 import group.msg.examples.day13.MyScheduledBean;
@@ -26,6 +27,9 @@ public class MyTest {
     private MyScheduledBean myScheduledBean;
 
     @Inject
+    private CensoredBean censoredBean;
+
+    @Inject
     private Logger logger;
 
     @Deployment
@@ -44,5 +48,12 @@ public class MyTest {
     public void randomDetails(){
         myScheduledBean.scheduleWildCard();
         logger.info("Employees name");
+    }
+
+    @Test
+    public void censored(){
+        String result=censoredBean.replaceString("shut the fuck up");
+        logger.info("censored: " + result);
+
     }
 }
