@@ -51,7 +51,7 @@ public class MyTestClass {
 
     @Test
     public void testBadWords() {
-        String message = thirdExercise.sendMessageToChat("Lupul a spus urat1");
+        String message = thirdExercise.sendMessageToChat("Lupul a spus urat1", "Iedul a spus urat2 inapoi.", "Iar iepurasul a spus urat3 si urat1");
         logger.info("Third Exercise Intercepted!\nValue is: " + message);
         logger.info("================================================================");
     }

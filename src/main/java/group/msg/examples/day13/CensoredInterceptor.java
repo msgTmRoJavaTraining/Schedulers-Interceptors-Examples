@@ -5,7 +5,9 @@ import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -17,7 +19,6 @@ public class CensoredInterceptor {
     private Logger logger;
 
     private String isBadWord(String givenWord) {
-        logger.info("isBadWord reached!");
         String originalWord = givenWord;
         String[] badWords = { "urat1", "urat2", "urat3" };
 
@@ -60,14 +61,22 @@ public class CensoredInterceptor {
         logger.info("FirstInterceptor analizeaza metoda: " + ic.getMethod().getName());
 
         Object[] params = ic.getParameters();
-        String message = (String) params[0];
+        String[] message = (String[]) params[0];
+        List<String> checkedMessage = new ArrayList<>();
 
-        String[] partedMessage = message.split(" ");
-        for(int i = 0; i < partedMessage.length; i++) {
-            partedMessage[i] = isBadWord(partedMessage[i]);
+        for(String sentence : message) {
+            String[] partedMessage = sentence.split(" ");
+
+            for(int i = 0; i < partedMessage.length; i++) {
+                partedMessage[i] = isBadWord(partedMessage[i]);
+            }
+
+            checkedMessage.add(getRestoredMessage(partedMessage));
         }
 
-        Object[] newParam = { getRestoredMessage(partedMessage) };
+        String[] finalCheckedMessage = checkedMessage.toArray(new String[checkedMessage.size()]);
+
+        Object[] newParam = { finalCheckedMessage };
         ic.setParameters(newParam);
 
         Object result = ic.proceed();
