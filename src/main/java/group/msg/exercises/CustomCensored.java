@@ -39,12 +39,27 @@ public class CustomCensored  {
     }
 
 
-    public String replaceSwearWords(String received){
+    public String replaceSingleSwearWords(String received){
         String res = "";
         swearWords.add("fuck");
         for(String str:swearWords){
 
             res = received.replace(str,CustomCensored.getAlphaNumericString(str.length()));
+        }
+
+        return res;
+    }
+
+    public String replaceDoubleSwearWords(String firstReceived,String secondReceived){
+
+        String res = "";
+        swearWords.add("drg");
+
+        String receivedConcat = firstReceived + secondReceived;
+
+        for(String str:swearWords){
+
+            res = receivedConcat.replace(str,CustomCensored.getAlphaNumericString(str.length()));
         }
 
         return res;

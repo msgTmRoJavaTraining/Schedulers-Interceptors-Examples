@@ -34,11 +34,18 @@ public class SwearReplaceWord {
     }
 
     @Test
-    public void testInterceptedHello() {
-        String response = censoredEjb.replaceSwearWords("fuckkkkk");
+    public void testInterceptedOneString() {
+        String response = censoredEjb.replaceSingleSwearWords("fuckkkkk");
         logger.info("Intercepted: " + response);
         logger.info("================================================================");
 
+    }
+
+    @Test
+    public void testInterceptedDoubleString() {
+        String response = censoredEjb.replaceDoubleSwearWords("fuckkkkk","darrssdrqqq");
+        logger.info("Intercepted: " + response);
+        logger.info("================================================================");
 
     }
 
